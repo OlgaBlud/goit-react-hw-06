@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useId } from "react";
 import css from "./ContactForm.module.css";
 
-const ContactForm = ({ addContact }) => {
+const ContactForm = ({ onAddContact }) => {
   const initialValues = { name: "", number: "" };
   const nameFieldId = useId();
   const numberFieldId = useId();
@@ -22,7 +22,7 @@ const ContactForm = ({ addContact }) => {
 
   const handleFormSubmit = (values, actions) => {
     values.id = nanoid(5);
-    addContact(values);
+    onAddContact(values);
     actions.resetForm();
   };
 
