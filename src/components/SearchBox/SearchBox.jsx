@@ -1,11 +1,11 @@
 import { useId } from "react";
 import css from "./SearchBox.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilterValue } from "../../redux/filtersSlice";
+import { filterValue, setFilterValue } from "../../redux/filtersSlice";
 const SearchBox = () => {
   const searchInputId = useId();
   const dispatch = useDispatch();
-  const filterValue = useSelector((state) => state.filters.name);
+  const filterName = useSelector(filterValue);
   const handleFilter = (value) => {
     dispatch(setFilterValue(value));
   };
@@ -20,7 +20,7 @@ const SearchBox = () => {
         type="text"
         name="search"
         id={searchInputId}
-        value={filterValue}
+        value={filterName}
         onChange={(e) => handleFilter(e.target.value)}
       />
     </div>
