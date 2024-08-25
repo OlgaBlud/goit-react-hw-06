@@ -13,7 +13,9 @@ const ContactList = () => {
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
-
+  if (filteredContacts.length === 0) {
+    return;
+  }
   return (
     <ul className={css.contactList}>
       {filteredContacts.map(({ id, name, number }) => {
