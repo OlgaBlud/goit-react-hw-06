@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
@@ -62,22 +62,3 @@ function App() {
 }
 
 export default App;
-// _________________________________________________filter variant 1
-// const [filteredContacts, setFilteredContacts] = useState([]);
-// const handleSearchChange = (event) => {
-//   setSearchValue(event.target.value);
-// };
-// useEffect(
-//   () =>
-//     setFilteredContacts(
-//       contacts.filter((contact) => {
-//         return contact.name.toLowerCase().includes(searchValue.toLowerCase());
-//       })
-//     ),
-//   [searchValue, contacts]
-// );
-
-//  <SearchBox handleSearchChange={handleSearchChange} />
-//  <ContactList
-//         contacts={filteredContacts.length > 0 ? filteredContacts : contacts}
-//       />
