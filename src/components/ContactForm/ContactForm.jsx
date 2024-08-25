@@ -4,8 +4,15 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useId } from "react";
 import css from "./ContactForm.module.css";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+
+  const onAddContact = (newContact) => {
+    dispatch(addContact(newContact));
+  };
   const initialValues = { name: "", number: "" };
   const nameFieldId = useId();
   const numberFieldId = useId();
@@ -78,33 +85,3 @@ const ContactForm = ({ onAddContact }) => {
 };
 
 export default ContactForm;
-
-// /* // _________________________________________________variant without Formik */
-
-// import { nanoid } from "nanoid";
-// const ContactForm = ({ addContact }) => {
-//   const handleFormSubmit = (event) => {
-//     event.preventDefault();
-//     addContact({
-//       id: nanoid(5),
-//       name: event.target.name.value,
-//       number: event.target.phone.value,
-//     });
-//     event.target.reset();
-//   };
-//   return (
-//     <form onSubmit={handleFormSubmit}>
-//       <label htmlFor="name">
-//         <input type="text" name="name" />
-//         Name
-//       </label>
-//       <label htmlFor="phone">
-//         <input type="tel" name="phone" />
-//         Phone
-//       </label>
-//       <button type="submit">Add contact</button>
-//     </form>
-//   );
-// };
-
-// export default ContactForm;
